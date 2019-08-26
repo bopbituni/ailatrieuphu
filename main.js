@@ -11,7 +11,7 @@ const QUESTION = [ // Database Question
         },
         correct: "Đường chân trời"
     },{
-        question: "Đường nào là đường dài nhất ?",
+        question: "Du la duong dai nhat ?",
         point : 100,
         answer: {
         A: "Đường chân trời",
@@ -21,7 +21,7 @@ const QUESTION = [ // Database Question
         },
         correct: "Đường chân trời"
     },{
-        question: "Đường nào là đường dài nhất ?",
+        question: "Cau hoi so 3 ?",
         point : 100,
         answer: {
         A: "Đường chân trời",
@@ -115,142 +115,105 @@ const QUESTION = [ // Database Question
 ]
 
 
-
-
-
-
-let Game = function () {
-
-    this.level = 1;
-    this.answer = undefined;
+let Game = function (player) {
+    this.player = player;
     this.point = undefined;
-    this.time = TIME;
-    this.timePerFrame = 1000;
+    this.time = 60;
+    this.level = 1;
     this.support = undefined;
-    this.correct = undefined;
-    var self = this;
-
-
-    this.init = function () {
-        let gamer = new Gamer();
-
-        _time= document.createElement('div');
-        _time.id = 'time';
-        document.body.appendChild(_time);
-        this.initQuest();
-        this.initAnswer(gamer);
-        this.loop();
-    }
-    this.initAnswer = function (gamer) {
-
-        for (let a in this.getQuestion().answer){
-
-            if (this.getQuestion().answer.hasOwnProperty(a)){
-                _answer = document.createElement('input');
-                _answer.type = "button";
-                _answer.style.width = "120px";
-                _answer.style.height = "50px";
-                _answer.style.margin = "auto";
-                _answer.style.backgroundColor = "red";
-                _answer.style.border = "1px solid #ccc";
-                _answer.style.cssFloat = "left";
-                _answer.addEventListener('click',gamer.choices);
-                _answer.value = this.getQuestion().answer[a] ;
-                document.body.appendChild(_answer);
-            }
-        }
-    }
-
-
-
-    this.initQuest = function (){
-
-        _quest = document.createElement('div');
-        _quest.id = "quest";
-        _quest.style.width = "400px";
-        _quest.style.height = "100px";
-        _quest.style.margin = "auto";
-        _quest.style.backgroundColor = "green";
-        document.body.appendChild(_quest);
-
-        document.getElementById('quest').innerText = this.getQuestion().question;
-
-
+    let self = this;
+    this.start = function () {
+        this.countDown();
+        this.getQuestion();
+        this.getAnswer();
+        this.showQuestion();
+        this.showAnswer();
     }
 
     this.countDown = function () {
-        this.time--;
-        return this.time;
-    }
+        if (self.time > 0 ){
+            console.log(self.time);
+            setTimeout(self.countDown,1000);
+            self.time--;
+        }else {
+            console.log('Time out');
+        }
 
-    this.timeInit = function(){
-        _time= document.getElementById('time');
-        _time.innerText = "";
-        _time.innerText = this.time;
     }
-    this.loop = function () {
-        self.countDown();
-        self.timeInit();
-        setTimeout(self.loop,self.timePerFrame);
-    }
-
-    this.getQuestion = function(){
-        this.question = QUESTION[this.level];
+    this.getQuestion = function () {
+        this.question = QUESTION[self.level].question;
         return this.question;
     }
-    
+
+    this.getAnswer = function () {
+        this.answer = QUESTION[self.level].answer;
+        return this.answer;
+    }
+
+    this.checkAnswer = function(){
+        if (this.chosse == self.getQuestion().correct);
+    }
+    // Get HTML element by id
+    this.getElement = function(elementId){
+        return document.getElementById(elementId);
+    }
+
+    this.getElement('ans1').addEventListener('click', function(){
+        return self.getElement('ans1').innerText;
+    });
+    this.getElement('ans1').addEventListener('click', function(){
+        return self.getElement('ans2').innerText;
+    });
+    this.getElement('ans1').addEventListener('click', function(){
+        return self.getElement('ans3').innerText;
+    });
+    this.getElement('ans1').addEventListener('click', function(){
+        return self.getElement('ans4').innerText;
+    });
+
+
+    //Show Question
+    this.showQuestion = function () {
+        this.getElement('question').innerText = this.getQuestion();
+    }
+    //Show Answer
+
+    this.showAnswer = function () {
+        this.getElement('ans1').innerText = this.getAnswer().A;
+        this.getElement('ans2').innerText = this.getAnswer().B;
+        this.getElement('ans3').innerText = this.getAnswer().C;
+        this.getElement('ans4').innerText = this.getAnswer().D;
+    }
+    // Listen click event for 4 answer buttons
+
+
+
+
+    // Show an element
+    this.show = function(elementId){
+        this.getElement(elementId).style.display = 'block';
+    }
+
+    // Hide an element
+    this.hide = function(elementId){
+        this.getElement(elementId).style.display = 'none';
+    }
+
 
 }
 
-
-let Gamer = function () {
-    this.name = undefined;
-    this.point = 0;
-    this.choice = 1;
-    this.levelUp = function (game) {
-        this.level++;
-    }
-    this.pointUp = function (game) {
-        this.point += game.getQuestion().point;
-        return this.point;
-    }
-
-    this.choices = function (game) {
-
-        this.time = game.time;
-        console.log(this.value);
-        console.log(this.choice);
-
-
-        //this.choice--;
-        //console.log(game.getQuestion().correct);
-
-
-    }
-
+Game.prototype.getElement = function(){
 
 }
-
-
-
 
 
 
 
 
 function init(){
-
-    let game = new Game();
-    game.init();
-
-
-
-
-
+    let g = new Game();
+    //g.level  = 5;
+    g.start();
 }
-
-
-
-
 
 
