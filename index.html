@@ -1,90 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Starter Template for Bootstrap</title>
+    <title>Title Page</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <style>
-        body {
-            padding-top: 50px;
-        }
-
-        .starter-template {
-            padding: 40px 15px;
-            text-align: center;
-        }
-        #question {
-            width: 100%;
-            height: 100px;
-            background-color: #CCC;
-        }
-        #question {
-            width: 100%;
-
-            height: 100px;
-            background: #8734f7;
-            -webkit-transform: skew(30deg);
-            -moz-transform: skew(30deg);
-            -o-transform: skew(30deg);
-            transform: skew(30deg);
-        }
-        .answer{
-            border: 1px solid #CCC;
-            height: 50px;
-            background-color: lime;
-        }
-
-    </style>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+<title>WWTBAM by Andy Crush</title>
+
+<h1><img src="image.jpg" alt="Logo" width="100px" height="100px"></h1>
+
+<h1>Who wants to be a millionaire</h1>
 
 <body onload="init()">
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2" id="question">Hello</div>
+<div id="each-question" class="row">
+    <table>
+        <thead>
+        <tr>
+            <div id="question"> <span id="question-number"></span>
+                <span id="display-question"></span>
+
+            </div>
+        <tr>
+        </thead>
+        <tbody id="sellector">
+        <tr>
+            <td>
+                <div id="boxA" class="box"></div>
+            </td>
+            <td>
+                <div id="boxB" class="box"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="boxC" class="box"></div>
+            </td>
+            <td>
+                <div id="boxD" class="box"></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="form-group" id="board-button">
+        <button class="btn btn-info" id="submit-answer">Tôi chắc chắn</button>
+        <button class="btn btn-default" id="withdraw-button">Dừng cuộc chơi</button>
+        <button class="btn btn-info" id="help5050-button">50 : 50</button>
+        <button class="btn btn-primary" id="helpSurvey-button">Hỏi khán giả</button>
+    </div>
+    <div class="form-group" id="result-button">
+        <button class="btn btn-success" id="next-question">Câu tiếp theo</button>
+        <button class="btn btn-danger" id="restart-game">Chơi lại</button>
+    </div>
+    <div class="notice">
+        <div class="alert" id="alert"></div>
+    </div>
+    <div class="raw" id="reward"></div>
+    <div class="raw" id="point"></div>
+    <div class="raw" id="survey-region">
+        <div class="surveyBoard">
+            <div class="raw" id="chartA"></div>
+            <div class="raw" id="chartB"></div>
+            <div class="raw" id="chartC"></div>
+            <div class="raw" id="chartD"></div>
+        </div>
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-2 answer"  id="ans1">
-            Hello
-        </div>
-        <div class="col-md-6 offset-md-2 answer" id="ans2">
-            Hello
-        </div>
-        <div class="col-md-6 offset-md-2 answer" id="ans3">
-            Hello
-        </div>
-        <div class="col-md-6 offset-md-2 answer" id="ans4">
-            Hello
-        </div>
-        <div class="col-md-6 offset-md-2 answer" id="point">
 
-        </div>
-        <div class="col-md-6 offset-md-2 answer" id="level">
 
-        </div>
-    </div>
-</div>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="main.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 </body>
 </html>
