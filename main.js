@@ -447,9 +447,9 @@ Game.prototype.nextOrStop = function () {
         var message = "";
         $("#alert").attr("class", "alert alert-danger");
         if (this.level >= 10) {
-            message = "Bạn ra về với "+QUESTION[10].point +" $";
+            message = "Bạn ra về với "+QUESTION[9].point +" $";
         } else if (this.level >= 5) {
-            message = "Bạn ra về với "+QUESTION[5].point +" $";
+            message = "Bạn ra về với "+QUESTION[4].point +" $";
         } else {
             message = "Tiếc quá ! Bạn đã trả lời sai rồi."
         }
