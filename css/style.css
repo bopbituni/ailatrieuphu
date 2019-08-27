@@ -25,7 +25,7 @@ h1 {
     color: #27ae60;
     height: 30px;
     width: 30px;
-    border-radius: 50%;
+    border-radius: 10px;
     line-height: 30px;
     margin-right: 10px;
     padding: 5px 10px;
@@ -174,7 +174,7 @@ td {
 }
 .specialRewardStep {
     height: 40px;
-    width: 100px;
+    width: 120px;
     background-color: #2980b9;
     color: #ffffff;
     margin-top: 5px;
@@ -201,7 +201,7 @@ td {
 .number {
     position: absolute;
     color: #FFFFFF;
-    font-size:30px;
+    font-size:20px;
     font-weight:bold;
     margin: 4px;
     z-index:2;
@@ -209,8 +209,8 @@ td {
 .specialNumber {
     position: absolute;
     color: yellow;
-    font-size:30px;
-    line-height: 30px;
+    font-size:25px;
+    line-height: 22px;
     font-weight:bold;
     margin: 4px;
     z-index:2;

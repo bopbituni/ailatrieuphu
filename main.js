@@ -1,4 +1,4 @@
-const  TIME = 60;
+const  TIME = 6;
 const QUESTION = [ // Database Question
     {
         question: "Trong JavaScript sự kiện Onchange xảy ra khi nào?",
@@ -42,7 +42,7 @@ const QUESTION = [ // Database Question
         correct: "C"
     },{
         question: "Vua nào đặt nhiều niên hiệu nhất lịch sử nước ta",
-        point : 5000,
+        point : 10000,
         answer: {
             A: "Lý Thái Tổ",
             B: "Bảo Đại",
@@ -51,25 +51,75 @@ const QUESTION = [ // Database Question
         },
         correct: "C"
     },{
-        question: "Người ta thường gọi quốc gia nào là đất nước mặt trời mọc",
-        point : 7000,
+        question: "Chùa Đồng lớn nhất Việt Nam ở đâu?",
+        point : 70000,
         answer: {
-            A: "Việt Nam",
-            B: "Làm",
-            C: "Campuchia",
-            D: "Nhật"
+            A: "Bái Đính",
+            B: "Núi Yên Tử",
+            C: "Vịnh Hạ Long",
+            D: "Đà Nẵng"
+        },
+        correct: "B"
+    },{
+        question: "Huyện Võ Nhai thuộc tỉnh nào nước ta? ",
+        point : 90000,
+        answer: {
+            A: "Thái Nguyên",
+            B: "Thái Bình",
+            C: "Ninh Bình",
+            D: "Bình Định"
+        },
+        correct: "A"
+    },{
+        question: "Nhạc sĩ Sô Panh gắn liền với nhạc cụ nào?",
+        point : 100000,
+        answer: {
+            A: "Sáo",
+            B: "Đàn Bầu",
+            C: "Guitar",
+            D: "Piano"
         },
         correct: "D"
     },{
-        question: "Người ta thường gọi quốc gia nào là đất nước mặt trời mọc",
-        point : 8000,
+        question: "Kinh thành trà kiệu thuộc tỉnh nào?",
+        point : 120000,
         answer: {
-            A: "Việt Nam",
-            B: "Làm",
-            C: "Campuchia",
-            D: "Nhật"
+            A: "Quảng Trị",
+            B: "Quảng Nam",
+            C: "Quảng Bình",
+            D: "Quảng Ninh"
         },
-        correct: "D"
+        correct: "B"
+    },{
+        question: "Sau chiến tranh thế giới 2, phong trào giải phóng dân tộc nổi lên mạnh nhất ở đâu?",
+        point : 150000,
+        answer: {
+            A: "Châu Phi",
+            B: "Việt Nam",
+            C: "Mỹ",
+            D: "Pháp"
+        },
+        correct: "A"
+    },{
+        question: "Câu nói: \"Đầu tôi chưa rơi xuống đất, xin bệ hạ đừng lo\" là của ai?",
+        point : 180000,
+        answer: {
+            A: "Trần Thủ Độ",
+            B: "Trần Quốc Tuấn",
+            C: "Trần Tử Bình",
+            D: "Trần Công Hoan"
+        },
+        correct: "A"
+    },{
+        question: "Lần đầu tiên nước ta dùng bộc phá 1000 kg thuốc nổ đánh giặc là ở đâu? ",
+        point : 200000,
+        answer: {
+            A: "Điện Biên Phủ",
+            B: "Quảng Trị",
+            C: "Hà Nội",
+            D: "Đà Nẵng"
+        },
+        correct: "A"
     }
 
 ]
@@ -96,6 +146,7 @@ let Game = function () {
             this.hide($("#alert"));
             this.hide($("#survey-region"));
             this.showBoard();
+
             this.drawMap();
             this.changeStepColor();
     }
@@ -115,34 +166,36 @@ let Game = function () {
         this.showBoard();
 
 
+
     };
     this.showBoard = function () {
-        this.show($("#withdraw-button"));
-        $("#question-number").html(this.level + 1);
-        $("#point").html(this.point+" $");
-        $("#display-question").html(QUESTION[this.level].question);
-        $("#boxA").append("<span class='char'>A</span>" + QUESTION[this.level].answer.A);
-        $("#boxB").append("<span class='char'>B</span>" + QUESTION[this.level].answer.B);
-        $("#boxC").append("<span class='char'>C</span>" + QUESTION[this.level].answer.C);
-        $("#boxD").append("<span class='char'>D</span>" + QUESTION[this.level].answer.D);
-        var answerID = "#box" + QUESTION[this.level].correct;
-        $(answerID).attr('class', 'answerBox');
-        this.show($("#reward"));
-        this.hide($("#survey-region"));
-        //console.log(this.level);
-        this.show5050();
-        this.showSurvey();
+        if (this.time > 0){
+            this.show($("#withdraw-button"));
+            $("#question-number").html("Câu "+(this.level + 1));
+            $("#point").html(this.point+" $");
+            $("#display-question").html(QUESTION[this.level].question);
+            $("#boxA").append("<span class='char'>A</span>" + QUESTION[this.level].answer.A);
+            $("#boxB").append("<span class='char'>B</span>" + QUESTION[this.level].answer.B);
+            $("#boxC").append("<span class='char'>C</span>" + QUESTION[this.level].answer.C);
+            $("#boxD").append("<span class='char'>D</span>" + QUESTION[this.level].answer.D);
+            var answerID = "#box" + QUESTION[this.level].correct;
+            $(answerID).attr('class', 'answerBox');
+            this.show($("#reward"));
+            this.hide($("#survey-region"));
+            this.show5050();
+            this.showSurvey();
+        }else {
+            self.restartGame();
+        }
+
 
 
     };
     // Countdown
     this.countDown = function () {
-        if (self.time > 0 ){
-            setTimeout(self.countDown,1000);
-            this.time--;
-        }else {
-
-        }
+        //console.log(self.time);
+        setTimeout(self.countDown,1000);
+        self.time--;
     }
 
     this.getAnswer = function () {
@@ -300,7 +353,7 @@ Game.prototype.congrats = function () {
     //console.log(QUESTION[this.level].point);
 
     this._interval = setInterval(function () {
-        console.log(this._hover);
+        //console.log(this._hover);
         if (this._hover) {
             $('.answerBox').css('background-color', '#2ecc71');
             $('.answerBox').css('pointer-events', 'none');
@@ -351,19 +404,16 @@ Game.prototype.resetBoardStatus = function () {
     $("#chartB").empty();
     $("#chartC").empty();
     $("#chartD").empty();
-
     $('.answerBox').css('pointer-events', 'auto');
     $('.boxWrong').css('pointer-events', 'auto');
     $('#sellector').css('pointer-events', 'auto');
     $('.box').css('pointer-events', 'auto');
     $('.answerBox').attr('class', 'box');
     $('.boxWrong').attr('class', 'box');
-
-
-
     this._color = '#3498db';
-    clearInterval(this._interval);
     this._number5050 = 0;
+    this.time = TIME;
+    clearInterval(this._interval);
 
 };
 Game.prototype.changeSubmitAnswerButton = function () {
