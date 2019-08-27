@@ -1,0 +1,264 @@
+body {
+    margin: 50px;
+}
+h1 {
+    text-align: center;
+}
+.char {
+    float: left;
+    color: #3498db;
+    font-size: 30px;
+    line-height: 45px;
+    margin-left: 2px;
+    margin-top: 2px;
+    background-color:#FFFFFF;
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
+}
+#page {
+    color:red;
+    margin-bottom:20px;
+}
+#question-number {
+    background-color: #ffffff;
+    color: #27ae60;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    line-height: 30px;
+    margin-right: 10px;
+    padding: 5px 10px;
+}
+#question {
+    margin-bottom:20px;
+    color: #FFFFFF;
+    border-radius: 4em 0px 4em 0px;
+    -moz-border-radius: 4em 0px 4em 0px;
+    -webkit-border-radius: 4em 0px 4em 0px;
+    border: 0px solid #000000;
+    line-height: 100px;
+    height:100px;
+    width:100%;
+    text-align: center;
+    font-weight: bold;
+    background-color:#27ae60;
+    text-transform: capitalize;
+}
+#question:hover {
+    background-color: #2ecc71;
+}
+#point {
+    background-color: #3498db;
+    color: white;
+    font-size: 20px;
+    font-weight:bold;
+    width: 100px;
+    height: 40px;
+    position: fixed;
+    left: 0px;
+    top: 100px;
+    line-height: 40px;
+}
+#a, #b, #c, #d {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+#win {
+    display:none;
+}
+#each-question {
+    max-width:800px;
+    text-align: center;
+    margin: 0 auto;
+}
+#characterBox {
+    text-align: center;
+    margin: 10px;
+}
+.container {
+    padding-top: 30px;
+}
+.box {
+    display: inline-block;
+    background-color : #3498db;
+    color: #FFFFFF;
+    border-radius: 2em 2em;
+    line-height: 50px;
+    height:50px;
+    width:100%;
+    font-weight:bold;
+}
+.boxWrong {
+    display: inline-block;
+    background-color : #3498db;
+    color: #3498db;
+    border-radius: 2em 2em;
+    line-height: 50px;
+    height:50px;
+    width:100%;
+    font-weight:bold;
+    pointer-events:none;
+}
+.answerBox {
+    display: inline-block;
+    background-color : #3498db;
+    color: #FFFFFF;
+    border-radius: 2em 2em;
+    line-height: 50px;
+    height:50px;
+    width:100%;
+    font-weight:bold;
+}
+td {
+    padding: 2px 2px;
+    width: 500px;
+}
+#footer {
+    margin-top: 30px;
+}
+.character {
+    position: absolute;
+    display:block;
+    line-height: 30px;
+    height:30px;
+    width:30px;
+    font-weight: bold;
+    z-index:-1;
+}
+.box:hover {
+    background-color: #2980b9;
+}
+#answer {
+    margin: 20px;
+}
+#submit-button {
+    float: right;
+}
+#sellector {
+}
+#button {
+    margin: 30px;
+}
+#next-question, #restart-game {
+    margin: 10px;
+    text-align: center;
+}
+#submit-answer {
+    float: left;
+    margin-top: 30px;
+}
+#withdraw-button {
+    float:right;
+    margin-top: 30px;
+    margin-left:10px;
+}
+#help5050-button {
+    float:right;
+    margin-top: 30px;
+    margin-left:10px;
+}
+#helpSurvey-button {
+    float:right;
+    margin-top: 30px;
+    margin-left:10px;
+}
+.rewardStep {
+    height: 40px;
+    width: 100px;
+    background-color: #3498db;
+    color: #ffffff;
+    margin-top: 5px;
+    margin-left: 1px;
+
+}
+.specialRewardStep {
+    height: 40px;
+    width: 100px;
+    background-color: #2980b9;
+    color: #ffffff;
+    margin-top: 5px;
+    margin-left: 1px;
+    display: inline-block;
+}
+.rewardStep:hover {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+.specialRewardStep:hover {
+    background-color: #3498db;
+    color: #ffffff;
+}
+.step{
+    margin-left: 5px;
+    margin-top: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 40px;
+}
+
+
+.number {
+    position: absolute;
+    color: #FFFFFF;
+    font-size:30px;
+    font-weight:bold;
+    margin: 4px;
+    z-index:2;
+}
+.specialNumber {
+    position: absolute;
+    color: yellow;
+    font-size:30px;
+    line-height: 30px;
+    font-weight:bold;
+    margin: 4px;
+    z-index:2;
+}
+#reward {
+    margin-top: 100px;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+#survey-region {
+    text-align: center;
+    border: 5px #3498db solid;
+    margin-top: 30px;
+    background-color: #ecf0f1;
+}
+.surveyBoard {
+    text-align: left;
+    margin: 20px;
+}
+.percent {
+    width : 0.7%;
+    height : 28px;
+    background-color: #3498db;
+    display: inline-block;
+}
+.startPercent {
+    width : 2px;
+    height : 28px;
+    background-color: #000000;
+    display: inline-block;
+}
+.ABCD {
+    font-weight: bold;
+    height:28px;
+    line-height:28px;
+    margin-right: 20px;
+}
+.percentNumber {
+    font-weight: bold;
+    height : 28px;
+    display: inline-block;
+    color: #000000;
+    float: right;
+    margin-left: 20px;
+    margin-right:20px;
+}
+#chartA, #chartB, #chartC, #chartD {
+    height:30px;
+    line-height:30px;
+}

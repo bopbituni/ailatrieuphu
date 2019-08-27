@@ -1,35 +1,75 @@
 const  TIME = 60;
 const QUESTION = [ // Database Question
     {
-        question: "Đường nào là đường dài nhất ?",
+        question: "Trong JavaScript sự kiện Onchange xảy ra khi nào?",
         point : 100,
         answer: {
-            A: "A",
-            B: "Đường làng",
-            C: "Đường xóm",
-            D: "Đường thốnnốt"
-        },
-        correct: "A"
-    },{
-        question: "Cau so 2",
-        point : 300,
-        answer: {
-            A: "Gi",
-            B: "Đường làng",
-            C: "B",
-            D: "Đường thốnnốt"
+            A: " Khi một đối tượng trong form nhận focus ",
+            B: " Xảy ra khi form được người dùng thay đổi dữ liệu ",
+            C: " Khi một đối tượng trong form mất focus ",
+            D: " Khi kích chuột vào nút lệnh "
         },
         correct: "B"
     },{
-        question: "Cau hoi so 3 ?",
+        question: "Mạnh vì..., bạo vì tiền",
+        point : 300,
+        answer: {
+            A: "Gạo",
+            B: "Đường",
+            C: "Muối",
+            D: "Mì chính"
+        },
+        correct: "A"
+    },{
+        question: "Người ta thường gọi quốc gia nào là đất nước mặt trời mọc",
         point : 500,
         answer: {
-            A: "Đường chân trời",
-            B: "Đường làng",
-            C: "Đường xóm",
-            D: "Gi cung duoc"
+            A: "Việt Nam",
+            B: "Lào",
+            C: "Campuchia",
+            D: "Nhật"
+        },
+        correct: "D"
+    },{
+        question: "Người Việt Nam đầu tiên bay vào vũ trụ",
+        point : 1000,
+        answer: {
+            A: "Tùng Sơn",
+            B: "Đại Úy Lê Thị Hiền",
+            C: "Phạm Tuân",
+            D: "Khá Bảnh"
         },
         correct: "C"
+    },{
+        question: "Vua nào đặt nhiều niên hiệu nhất lịch sử nước ta",
+        point : 5000,
+        answer: {
+            A: "Lý Thái Tổ",
+            B: "Bảo Đại",
+            C: "Lý Nhân Tông",
+            D: "Trần Thái Tông"
+        },
+        correct: "C"
+    },{
+        question: "Người ta thường gọi quốc gia nào là đất nước mặt trời mọc",
+        point : 7000,
+        answer: {
+            A: "Việt Nam",
+            B: "Làm",
+            C: "Campuchia",
+            D: "Nhật"
+        },
+        correct: "D"
+    },{
+        question: "Người ta thường gọi quốc gia nào là đất nước mặt trời mọc",
+        point : 8000,
+        answer: {
+            A: "Việt Nam",
+            B: "Làm",
+            C: "Campuchia",
+            D: "Nhật"
+        },
+        correct: "D"
     }
 
 ]
@@ -50,7 +90,6 @@ let Game = function () {
             this.hide($("#question-form"));
             this.hide($("#button"));
             this.show($("#board-button"));
-            this.show($('#each-question'));
             this.hide($("#submit-answer"));
             this.hide($('#next-question'));
             this.hide($("#restart-game"));
@@ -62,9 +101,10 @@ let Game = function () {
     }
     this.restartGame = function () {
         this.level = 0;
+        this.point = 0;
         $("#question-number").html(this.level + 1);
         $("#display-question").html(QUESTION[this.level]);
-        ($("#reward")).empty();
+        $("#reward").empty();
         this.show($('#board-button'));
         this.hide($("#submit-answer"));
         this.hide($('#restart-game'));
@@ -79,21 +119,23 @@ let Game = function () {
     this.showBoard = function () {
         this.show($("#withdraw-button"));
         $("#question-number").html(this.level + 1);
+        $("#point").html(this.point+" $");
         $("#display-question").html(QUESTION[this.level].question);
         $("#boxA").append("<span class='char'>A</span>" + QUESTION[this.level].answer.A);
         $("#boxB").append("<span class='char'>B</span>" + QUESTION[this.level].answer.B);
         $("#boxC").append("<span class='char'>C</span>" + QUESTION[this.level].answer.C);
         $("#boxD").append("<span class='char'>D</span>" + QUESTION[this.level].answer.D);
         var answerID = "#box" + QUESTION[this.level].correct;
-        console.log(answerID);
         $(answerID).attr('class', 'answerBox');
         this.show($("#reward"));
         this.hide($("#survey-region"));
+        //console.log(this.level);
         this.show5050();
         this.showSurvey();
+
+
     };
-
-
+    // Countdown
     this.countDown = function () {
         if (self.time > 0 ){
             setTimeout(self.countDown,1000);
@@ -103,23 +145,21 @@ let Game = function () {
         }
     }
 
-
-
     this.getAnswer = function () {
         this.answer = QUESTION[this.level].answer;
         return this.answer;
     }
     this.getCorrect = function () {
-        this.correct = QUESTION[this.level].correct;
+       return this.correct = QUESTION[this.level].correct;
     }
     // Get HTML element by id
     this.getElement = function(elementId){
         return document.getElementById(elementId);
     }
-
+    // Check answer
     this.checkAnswer = function(){
-        this.getCorrect();
-        if (this._selectArray[this.level] == "box"+this.correct){
+
+        if (this._selectArray[this.level] == "box"+this.getCorrect()){
             return  true;
         }else {
            return false;
@@ -197,7 +237,7 @@ Game.prototype.show = function (elementDom) {
 
 
 Game.prototype.show5050 = function () {
-    if (!this._use5050) {
+    if (!this._use5050  && this.level >=5) {
         this.show($("#help5050-button"))
     } else {
         this.hide($("#help5050-button"))
@@ -205,7 +245,7 @@ Game.prototype.show5050 = function () {
 };
 
 Game.prototype.showSurvey = function () {
-    if (!this._useSurvey) {
+    if (!this._useSurvey && this.level >=5) {
         this.show($("#helpSurvey-button"))
     } else {
         this.hide($("#helpSurvey-button"))
@@ -213,18 +253,19 @@ Game.prototype.showSurvey = function () {
 };
 Game.prototype.drawMap = function () {
     let countQuestion = QUESTION.length;
-    console.log(countQuestion);
-    for (var i = 1 ; i <= countQuestion; i++) {
+    //console.log(countQuestion);
+    for (var i = 1; i <= countQuestion; i++) {
         if (i % 5 !== 0) {
-            $("#reward").append("<div class='rewardStep' id='step" + i + "'><span class='step'>"+QUESTION[i-1].point+" $</span></div>");
-
+            $("#reward").append("<div class='rewardStep' id='step" + i + "'><p class='number'>" + i + "</p><span class='step'>"+QUESTION[i-1].point+" $</span></div>")
         } else {
-            $("#reward").append("<div class='rewardStep' id='step" + i + "'><span class='step'>"+QUESTION[i-1].point+" $</span></div>")
+            $("#reward").append("<div class='specialRewardStep' id='step" + i + "'><p class='specialNumber'>" + i + "</p><span class='step'>"+QUESTION[i-1].point+" $</span></div>")
         }
     }
+
 };
 
 Game.prototype.changeStepColor = function () {
+    this.point += QUESTION[this.level].point;
     var currentStep = this.level + 1;
     for (var i = 1; i < currentStep; i++) {
         var id = "#step" + i;
@@ -256,23 +297,25 @@ Game.prototype.selectBox = function (boxID) {
 };
 
 Game.prototype.congrats = function () {
+    //console.log(QUESTION[this.level].point);
+
     this._interval = setInterval(function () {
-        console.log(self._hover);
-        if (self._hover) {
+        console.log(this._hover);
+        if (this._hover) {
             $('.answerBox').css('background-color', '#2ecc71');
             $('.answerBox').css('pointer-events', 'none');
             $('#sellector').css('pointer-events', 'none');
             $('.box').css('pointer-events', 'none');
-            self._hover = false;
+            this._hover = false;
         } else {
-            $('.answerBox').css('background-color', self._color);
+            $('.answerBox').css('background-color', 'orange');
             $('.answerBox').css('pointer-events', 'none');
             $('#sellector').css('pointer-events', 'none');
             $('.box').css('pointer-events', 'none');
-            self._hover = true;
+            this._hover = true;
         }
 
-    }, 150);
+    }, 100);
 };
 Game.prototype.nextLevel = function () {
     this.level++;
@@ -324,15 +367,16 @@ Game.prototype.resetBoardStatus = function () {
 
 };
 Game.prototype.changeSubmitAnswerButton = function () {
-    this.checkAnswer() ? this.show($("#next-question")) : this.show($("#restart-game"));
+    this.checkAnswer() ?  this.show($("#next-question")): this.show($("#restart-game"));
 
 };
 Game.prototype.withdraw = function () {
+    this._point = $("#point").html();
     this.show($('#alert'));
     this.hide($("#submit-answer"));
     this.hide($("#withdraw-button"));
     this.show($("#restart-game"));
-    var message = "Bạn đã nhận được phần thưởng ở câu hỏi số " + this.level;
+    var message = "Bạn sẽ ra về với " + this._point;
     $("#alert").attr("class", "alert alert-info");
     $("#alert").html(message);
 
@@ -341,7 +385,7 @@ Game.prototype.nextOrStop = function () {
     if (this.checkAnswer()) {
         $("#alert").attr("class", "alert alert-success");
         $("#alert").html("Chúc mừng ! Bạn đã trả lời đúng !");
-        self._color = '#f1c40f';
+        this._color = '#f1c40f';
         if (this.level + 1 == QUESTION.length) {
             $("#alert").attr("class", "alert alert-success");
             $("#alert").html("Chúc mừng bạn đã trở thành TRIỆU PHÚ");
@@ -353,9 +397,9 @@ Game.prototype.nextOrStop = function () {
         var message = "";
         $("#alert").attr("class", "alert alert-danger");
         if (this.level >= 10) {
-            message = "Your reward is for question 10"
+            message = "Bạn ra về với "+QUESTION[10].point +" $";
         } else if (this.level >= 5) {
-            message = "Your reward is for question 5"
+            message = "Bạn ra về với "+QUESTION[5].point +" $";
         } else {
             message = "Tiếc quá ! Bạn đã trả lời sai rồi."
         }
