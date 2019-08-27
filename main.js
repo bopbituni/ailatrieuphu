@@ -118,60 +118,83 @@ const QUESTION = [ // Database Question
 let Game = function (player) {
     this.player = player;
     this.point = undefined;
-    this.time = 60;
+    this.time = TIME;
     this.level = 1;
     this.support = undefined;
     let self = this;
     this.start = function () {
-        this.countDown();
-        this.getQuestion();
-        this.getAnswer();
-        this.showQuestion();
-        this.showAnswer();
+        if (this.level < QUESTION.length){
+            this.countDown();
+            this.getQuestion();
+            this.getAnswer();
+            this.showQuestion();
+            this.showAnswer();
+        }else {
+            console.log("Winner");
+        }
+
     }
 
     this.countDown = function () {
         if (self.time > 0 ){
             console.log(self.time);
             setTimeout(self.countDown,1000);
-            self.time--;
+            this.time--;
         }else {
             console.log('Time out');
         }
 
     }
     this.getQuestion = function () {
-        this.question = QUESTION[self.level].question;
+        this.question = QUESTION[this.level].question;
         return this.question;
     }
 
     this.getAnswer = function () {
-        this.answer = QUESTION[self.level].answer;
+        this.answer = QUESTION[this.level].answer;
         return this.answer;
     }
-
-    this.checkAnswer = function(){
-        if (this.chosse == self.getQuestion().correct);
+    this.getCorrect = function () {
+        this.correct = QUESTION[this.level].correct;
     }
+
     // Get HTML element by id
     this.getElement = function(elementId){
         return document.getElementById(elementId);
     }
 
+    this.checkAnswer = function(answer){
+        this.getCorrect();
+        if (answer == self.correct){
+            this.nextLevel();
+            this.start();
+        }else {
+            console.log('Fail')
+            this.restart();
+        }
+    }
+
     this.getElement('ans1').addEventListener('click', function(){
-        return self.getElement('ans1').innerText;
+        return self.checkAnswer(self.getAnswer().A);
     });
-    this.getElement('ans1').addEventListener('click', function(){
-        return self.getElement('ans2').innerText;
+    this.getElement('ans2').addEventListener('click', function(){
+        return self.checkAnswer(self.getAnswer().B);
     });
-    this.getElement('ans1').addEventListener('click', function(){
-        return self.getElement('ans3').innerText;
+    this.getElement('ans3').addEventListener('click', function(){
+        return self.checkAnswer(self.getAnswer().C);
     });
-    this.getElement('ans1').addEventListener('click', function(){
-        return self.getElement('ans4').innerText;
+    this.getElement('ans4').addEventListener('click', function(){
+        return self.checkAnswer(self.getAnswer().D);
     });
 
 
+    this.nextLevel = function () {
+        this.level++;
+    }
+    this.restart = function () {
+        this.level = 1;
+        this.start();
+    }
     //Show Question
     this.showQuestion = function () {
         this.getElement('question').innerText = this.getQuestion();
@@ -202,9 +225,6 @@ let Game = function (player) {
 
 }
 
-Game.prototype.getElement = function(){
-
-}
 
 
 
