@@ -4,122 +4,41 @@ const QUESTION = [ // Database Question
         question: "Đường nào là đường dài nhất ?",
         point : 100,
         answer: {
-        A: "Đường chân trời",
+        A: "D",
             B: "Đường làng",
             C: "Đường xóm",
             D: "Đường thốnnốt"
         },
-        correct: "Đường chân trời"
+        correct: "D"
     },{
-        question: "Du la duong dai nhat ?",
-        point : 100,
+        question: "Cau so 2",
+        point : 300,
         answer: {
         A: "Đường chân trời",
             B: "Đường làng",
-            C: "Đường xóm",
+            C: "S",
             D: "Đường thốnnốt"
         },
-        correct: "Đường chân trời"
+        correct: "S"
     },{
         question: "Cau hoi so 3 ?",
-        point : 100,
+        point : 500,
         answer: {
         A: "Đường chân trời",
             B: "Đường làng",
             C: "Đường xóm",
-            D: "Đường thốnnốt"
+            D: "V"
         },
-        correct: "Đường chân trời"
-    },{
-        question: "Đường nào là đường dài nhất ?",
-        point : 100,
-        answer: {
-        A: "Đường chân trời",
-            B: "Đường làng",
-            C: "Đường xóm",
-            D: "Đường thốnnốt"
-        },
-        correct: "Đường chân trời"
-    },{
-        question: "Đường nào là đường dài nhất ?",
-        point : 100,
-        answer: {
-        A: "Đường chân trời",
-            B: "Đường làng",
-            C: "Đường xóm",
-            D: "Đường thốnnốt"
-        },
-        correct: "Đường chân trời"
-    },{
-        question: "Đường nào là đường dài nhất ?",
-        point : 100,
-        answer: {
-        A: "Đường chân trời",
-            B: "Đường làng",
-            C: "Đường xóm",
-            D: "Đường thốnnốt"
-        },
-        correct: "Đường chân trời"
-    },{
-        question: "Đường nào là đường dài nhất ?",
-        point : 100,
-        answer: {
-        A: "Đường chân trời",
-            B: "Đường làng",
-            C: "Đường xóm",
-            D: "Đường thốnnốt"
-        },
-        correct: "Đường chân trời"
-    },{
-        question: "Đường nào là đường dài nhất ?",
-        point : 100,
-        answer: {
-        A: "Đường chân trời",
-            B: "Đường làng",
-            C: "Đường xóm",
-            D: "Đường thốnnốt"
-        },
-        correct: "Đường chân trời"
-    },{
-        question: "Đường nào là đường dài nhất ?",
-        point : 100,
-        answer: {
-        A: "Đường chân trời",
-            B: "Đường làng",
-            C: "Đường xóm",
-            D: "Đường thốnnốt"
-        },
-        correct: "Đường chân trời"
-    },{
-        question: "Đường nào là đường dài nhất ?",
-        point : 100,
-        answer: {
-        A: "Đường chân trời",
-            B: "Đường làng",
-            C: "Đường xóm",
-            D: "Đường thốnnốt"
-        },
-        correct: "Đường chân trời"
-    },{
-        question: "Đường nào là đường dài nhất ?",
-        point : 100,
-        answer: {
-            A: "Đường chân trời",
-            B: "Đường làng",
-            C: "Đường xóm",
-            D: "Đường thốnnốt"
-        },
-        correct: "Đường chân trời"
-    },
+        correct: "V"
+    }
 
 ]
 
 
-let Game = function (player) {
-    this.player = player;
-    this.point = undefined;
+let Game = function () {
+    this.point = 0;
     this.time = TIME;
-    this.level = 1;
+    this.level = 0;
     this.support = undefined;
     let self = this;
     this.start = function () {
@@ -129,15 +48,18 @@ let Game = function (player) {
             this.getAnswer();
             this.showQuestion();
             this.showAnswer();
-        }else {
-            console.log("Winner");
+            this.showLevel();
+            this.showPoint();
+        }else if (this.level == QUESTION.length) {
+            this.showPoint();
         }
+
 
     }
 
     this.countDown = function () {
         if (self.time > 0 ){
-            console.log(self.time);
+            //console.log(self.time);
             setTimeout(self.countDown,1000);
             this.time--;
         }else {
@@ -157,7 +79,9 @@ let Game = function (player) {
     this.getCorrect = function () {
         this.correct = QUESTION[this.level].correct;
     }
-
+    this.getPoint = function () {
+        return QUESTION[this.level].point;
+    }
     // Get HTML element by id
     this.getElement = function(elementId){
         return document.getElementById(elementId);
@@ -167,13 +91,49 @@ let Game = function (player) {
         this.getCorrect();
         if (answer == self.correct){
             this.nextLevel();
-            this.start();
         }else {
-            console.log('Fail')
             this.restart();
         }
     }
 
+    this.nextLevel = function () {
+        this.point += this.getPoint();
+        this.level++;
+        this.start();
+
+    }
+    this.restart = function () {
+        this.level = 0;
+        this.point = 0;
+        this.start();
+    }
+    //Show Point
+    this.showPoint = function () {
+        this.getElement('point').innerText = this.point;
+    }
+
+    //Show Question
+    this.showQuestion = function () {
+        this.getElement('question').innerText = this.getQuestion();
+    }
+
+    //Show Level
+
+    this.showLevel = function () {
+        this.getElement('level').innerText = this.level+1;
+    }
+
+
+    //Show Answer
+    this.showAnswer = function () {
+        this.getElement('ans1').innerText = this.getAnswer().A;
+        this.getElement('ans2').innerText = this.getAnswer().B;
+        this.getElement('ans3').innerText = this.getAnswer().C;
+        this.getElement('ans4').innerText = this.getAnswer().D;
+    }
+
+
+    // Listen click event for 4 answer buttons
     this.getElement('ans1').addEventListener('click', function(){
         return self.checkAnswer(self.getAnswer().A);
     });
@@ -186,29 +146,6 @@ let Game = function (player) {
     this.getElement('ans4').addEventListener('click', function(){
         return self.checkAnswer(self.getAnswer().D);
     });
-
-
-    this.nextLevel = function () {
-        this.level++;
-    }
-    this.restart = function () {
-        this.level = 1;
-        this.start();
-    }
-    //Show Question
-    this.showQuestion = function () {
-        this.getElement('question').innerText = this.getQuestion();
-    }
-    //Show Answer
-
-    this.showAnswer = function () {
-        this.getElement('ans1').innerText = this.getAnswer().A;
-        this.getElement('ans2').innerText = this.getAnswer().B;
-        this.getElement('ans3').innerText = this.getAnswer().C;
-        this.getElement('ans4').innerText = this.getAnswer().D;
-    }
-    // Listen click event for 4 answer buttons
-
 
 
 
