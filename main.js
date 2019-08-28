@@ -1,4 +1,4 @@
-const  TIME = 6;
+const  TIME = 60;
 const QUESTION = [ // Database Question
     {
         question: "Trong JavaScript sự kiện Onchange xảy ra khi nào?",
@@ -146,7 +146,6 @@ let Game = function () {
             this.hide($("#alert"));
             this.hide($("#survey-region"));
             this.showBoard();
-
             this.drawMap();
             this.changeStepColor();
     }
@@ -169,7 +168,6 @@ let Game = function () {
 
     };
     this.showBoard = function () {
-        if (this.time > 0){
             this.show($("#withdraw-button"));
             $("#question-number").html("Câu "+(this.level + 1));
             $("#point").html(this.point+" $");
@@ -180,24 +178,30 @@ let Game = function () {
             $("#boxD").append("<span class='char'>D</span>" + QUESTION[this.level].answer.D);
             var answerID = "#box" + QUESTION[this.level].correct;
             $(answerID).attr('class', 'answerBox');
+            this.countDown();
             this.show($("#reward"));
             this.hide($("#survey-region"));
             this.show5050();
             this.showSurvey();
-        }else {
-            self.restartGame();
-        }
 
 
 
     };
     // Countdown
     this.countDown = function () {
-        //console.log(self.time);
-        setTimeout(self.countDown,1000);
-        self.time--;
-    }
+        clearInterval(self._count);
+        this._count = setInterval(function () {
+            self.time--;
+            $("#time").html("00 : "+self.time);
+            if (self.time == 0){
+                self.resetBoardStatus();
+                self.restartGame();
+                self.drawMap();
+                self.changeStepColor();
+            }
 
+        },1000)
+    }
     this.getAnswer = function () {
         this.answer = QUESTION[this.level].answer;
         return this.answer;

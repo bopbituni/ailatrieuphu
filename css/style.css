@@ -153,7 +153,7 @@ td {
     margin-top: 30px;
     margin-left:10px;
 }
-#help5050-button {
+#help5050-button , #time {
     float:right;
     margin-top: 30px;
     margin-left:10px;
@@ -165,7 +165,7 @@ td {
 }
 .rewardStep {
     height: 40px;
-    width: 100px;
+
     background-color: #3498db;
     color: #ffffff;
     margin-top: 5px;
@@ -174,7 +174,7 @@ td {
 }
 .specialRewardStep {
     height: 40px;
-    width: 120px;
+    width: 140px;
     background-color: #2980b9;
     color: #ffffff;
     margin-top: 5px;
@@ -191,7 +191,7 @@ td {
 }
 .step{
     margin-left: 5px;
-    margin-top: 20px;
+    margin-top: 10px;
     font-weight: bold;
     text-align: center;
     line-height: 40px;
