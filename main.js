@@ -1,130 +1,3 @@
-const  TIME = 60;
-const QUESTION = [ // Database Question
-    {
-        question: "Trong JavaScript sự kiện Onchange xảy ra khi nào?",
-        point : 100,
-        answer: {
-            A: " Khi một đối tượng trong form nhận focus ",
-            B: " Xảy ra khi form được người dùng thay đổi dữ liệu ",
-            C: " Khi một đối tượng trong form mất focus ",
-            D: " Khi kích chuột vào nút lệnh "
-        },
-        correct: "B"
-    },{
-        question: "Mạnh vì..., bạo vì tiền",
-        point : 300,
-        answer: {
-            A: "Gạo",
-            B: "Đường",
-            C: "Muối",
-            D: "Mì chính"
-        },
-        correct: "A"
-    },{
-        question: "Người ta thường gọi quốc gia nào là đất nước mặt trời mọc",
-        point : 500,
-        answer: {
-            A: "Việt Nam",
-            B: "Lào",
-            C: "Campuchia",
-            D: "Nhật"
-        },
-        correct: "D"
-    },{
-        question: "Người Việt Nam đầu tiên bay vào vũ trụ",
-        point : 1000,
-        answer: {
-            A: "Tùng Sơn",
-            B: "Đại Úy Lê Thị Hiền",
-            C: "Phạm Tuân",
-            D: "Khá Bảnh"
-        },
-        correct: "C"
-    },{
-        question: "Vua nào đặt nhiều niên hiệu nhất lịch sử nước ta",
-        point : 10000,
-        answer: {
-            A: "Lý Thái Tổ",
-            B: "Bảo Đại",
-            C: "Lý Nhân Tông",
-            D: "Trần Thái Tông"
-        },
-        correct: "C"
-    },{
-        question: "Chùa Đồng lớn nhất Việt Nam ở đâu?",
-        point : 70000,
-        answer: {
-            A: "Bái Đính",
-            B: "Núi Yên Tử",
-            C: "Vịnh Hạ Long",
-            D: "Đà Nẵng"
-        },
-        correct: "B"
-    },{
-        question: "Huyện Võ Nhai thuộc tỉnh nào nước ta? ",
-        point : 90000,
-        answer: {
-            A: "Thái Nguyên",
-            B: "Thái Bình",
-            C: "Ninh Bình",
-            D: "Bình Định"
-        },
-        correct: "A"
-    },{
-        question: "Nhạc sĩ Sô Panh gắn liền với nhạc cụ nào?",
-        point : 100000,
-        answer: {
-            A: "Sáo",
-            B: "Đàn Bầu",
-            C: "Guitar",
-            D: "Piano"
-        },
-        correct: "D"
-    },{
-        question: "Kinh thành trà kiệu thuộc tỉnh nào?",
-        point : 120000,
-        answer: {
-            A: "Quảng Trị",
-            B: "Quảng Nam",
-            C: "Quảng Bình",
-            D: "Quảng Ninh"
-        },
-        correct: "B"
-    },{
-        question: "Sau chiến tranh thế giới 2, phong trào giải phóng dân tộc nổi lên mạnh nhất ở đâu?",
-        point : 150000,
-        answer: {
-            A: "Châu Phi",
-            B: "Việt Nam",
-            C: "Mỹ",
-            D: "Pháp"
-        },
-        correct: "A"
-    },{
-        question: "Câu nói: \"Đầu tôi chưa rơi xuống đất, xin bệ hạ đừng lo\" là của ai?",
-        point : 180000,
-        answer: {
-            A: "Trần Thủ Độ",
-            B: "Trần Quốc Tuấn",
-            C: "Trần Tử Bình",
-            D: "Trần Công Hoan"
-        },
-        correct: "A"
-    },{
-        question: "Lần đầu tiên nước ta dùng bộc phá 1000 kg thuốc nổ đánh giặc là ở đâu? ",
-        point : 200000,
-        answer: {
-            A: "Điện Biên Phủ",
-            B: "Quảng Trị",
-            C: "Hà Nội",
-            D: "Đà Nẵng"
-        },
-        correct: "A"
-    }
-
-]
-
-
 let Game = function () {
     this.point = 0;
     this._color = '#3498db';
@@ -136,21 +9,22 @@ let Game = function () {
 
 
     this.startGame = function () {
-            this.level = 0;
-            this._use5050 = false;
-            this._useSurvey = false;
-            this.hide($("#question-form"));
-            this.hide($("#button"));
-            this.show($("#board-button"));
-            this.hide($("#submit-answer"));
-            this.hide($('#next-question'));
-            this.hide($("#restart-game"));
-            this.hide($("#alert"));
-            this.hide($("#survey-region"));
-            this.showBoard();
-            this.drawMap();
-            this.changeStepColor();
-    }
+        this.level = 0;
+        this._use5050 = false;
+        this._useSurvey = false;
+        this.hide($("#question-form"));
+        this.hide($("#button"));
+        this.show($("#board-button"));
+        this.hide($("#submit-answer"));
+        this.hide($('#next-question'));
+        this.hide($("#restart-game"));
+        this.hide($("#alert"));
+        this.hide($("#survey-region"));
+        this.showBoard();
+        this.drawMap();
+        this.changeStepColor();
+
+    };
     this.restartGame = function () {
         this.level = 0;
         this.point = 0;
@@ -160,6 +34,7 @@ let Game = function () {
         $("#surveyBoard").empty();
         this.show($('#board-button'));
         this.hide($("#submit-answer"));
+
         this.hide($('#restart-game'));
         this.hide($('#next-question'));
         this.hide($('#alert'));
@@ -168,25 +43,23 @@ let Game = function () {
         this.showBoard();
 
 
-
     };
     this.showBoard = function () {
-            this.show($("#withdraw-button"));
-            $("#question-number").html("Câu "+(this.level + 1));
-            $("#point").html(this.point+" $");
-            $("#display-question").html(QUESTION[this.level].question);
-            $("#boxA").append("<span class='char'>A</span>" + QUESTION[this.level].answer.A);
-            $("#boxB").append("<span class='char'>B</span>" + QUESTION[this.level].answer.B);
-            $("#boxC").append("<span class='char'>C</span>" + QUESTION[this.level].answer.C);
-            $("#boxD").append("<span class='char'>D</span>" + QUESTION[this.level].answer.D);
-            var answerID = "#box" + QUESTION[this.level].correct;
-            $(answerID).attr('class', 'answerBox');
-            this.countDown();
-            this.show($("#reward"));
-            this.hide($("#survey-region"));
-            this.show5050();
-            this.showSurvey();
-
+        this.show($("#withdraw-button"));
+        $("#question-number").html("Câu " + (this.level + 1));
+        $("#point").html(this.point + "VNĐ");
+        $("#display-question").html(QUESTION[this.level].question);
+        $("#boxA").append("<span class='char'>A</span>" + QUESTION[this.level].answer.A);
+        $("#boxB").append("<span class='char'>B</span>" + QUESTION[this.level].answer.B);
+        $("#boxC").append("<span class='char'>C</span>" + QUESTION[this.level].answer.C);
+        $("#boxD").append("<span class='char'>D</span>" + QUESTION[this.level].answer.D);
+        var answerID = "#box" + QUESTION[this.level].correct;
+        $(answerID).attr('class', 'answerBox');
+        this.countDown();
+        this.show($("#reward"));
+        this.hide($("#survey-region"));
+        this.show5050();
+        this.showSurvey();
 
 
     };
@@ -195,63 +68,63 @@ let Game = function () {
         clearInterval(self._count);
         this._count = setInterval(function () {
             self.time--;
-            $("#time").html("00 : "+self.time);
-            if (self.time == 0){
+            $("#time").html("00 : " + self.time);
+            if (self.time == 0) {
                 self.resetBoardStatus();
                 self.restartGame();
                 self.drawMap();
                 self.changeStepColor();
             }
 
-        },1000)
-    }
+        }, 1000)
+    };
     this.getAnswer = function () {
         this.answer = QUESTION[this.level].answer;
         return this.answer;
-    }
+    };
     this.getCorrect = function () {
-       return this.correct = QUESTION[this.level].correct;
-    }
+        return this.correct = QUESTION[this.level].correct;
+    };
     // Get HTML element by id
-    this.getElement = function(elementId){
+    this.getElement = function (elementId) {
         return document.getElementById(elementId);
-    }
+    };
     // Check answer
-    this.checkAnswer = function(){
+    this.checkAnswer = function () {
 
-        if (this._selectArray[this.level] == "box"+this.getCorrect()){
-            return  true;
-        }else {
-           return false;
+        if (this._selectArray[this.level] == "box" + this.getCorrect()) {
+            return true;
+        } else {
+            return false;
         }
-    }
+    };
 
 
     //Show Answer
     this.showAnswer = function () {
-        this.getElement('boxA').innerHTML = "<span class=\'char\'>A</span>"+this.getAnswer().A;
-        this.getElement('boxB').innerHTML = "<span class=\'char\'>B</span>"+this.getAnswer().B;
-        this.getElement('boxC').innerHTML = "<span class=\'char\'>C</span>"+this.getAnswer().C;
-        this.getElement('boxD').innerHTML = "<span class=\'char\'>D</span>"+this.getAnswer().D;
-    }
+        this.getElement('boxA').innerHTML = "<span class=\'char\'>A</span>" + this.getAnswer().A;
+        this.getElement('boxB').innerHTML = "<span class=\'char\'>B</span>" + this.getAnswer().B;
+        this.getElement('boxC').innerHTML = "<span class=\'char\'>C</span>" + this.getAnswer().C;
+        this.getElement('boxD').innerHTML = "<span class=\'char\'>D</span>" + this.getAnswer().D;
+    };
 
 
     // Listen click event for 4 answer buttons
-    this.getElement('boxA').addEventListener('click', function(){
-       return self.selectBox(this.id);
-    });
-    this.getElement('boxB').addEventListener('click', function(){
+    this.getElement('boxA').addEventListener('click', function () {
         return self.selectBox(this.id);
     });
-    this.getElement('boxC').addEventListener('click', function(){
+    this.getElement('boxB').addEventListener('click', function () {
         return self.selectBox(this.id);
     });
-    this.getElement('boxD').addEventListener('click', function(){
+    this.getElement('boxC').addEventListener('click', function () {
+        return self.selectBox(this.id);
+    });
+    this.getElement('boxD').addEventListener('click', function () {
         return self.selectBox(this.id);
     });
 
     //Submit Answer click
-    this.getElement('submit-answer').addEventListener('click',function () {
+    this.getElement('submit-answer').addEventListener('click', function () {
         self.changeSubmitAnswerButton();
         self.changeSubmitAnswerButton();
         self.nextOrStop();
@@ -259,43 +132,53 @@ let Game = function () {
         self.hide($('#board-button'));
         self.show($('#alert'));
 
-    })
+    });
 
     // Next button click
-    this.getElement('next-question').addEventListener('click',function () {
+    this.getElement('next-question').addEventListener('click', function () {
         self.resetBoardStatus();
         self.nextLevel();
         self.showBoard();
         self.changeStepColor();
-    })
+    });
 
     // Restart button click
 
-    this.getElement('restart-game').addEventListener('click',function () {
+    this.getElement('restart-game').addEventListener('click', function () {
         self.resetBoardStatus();
         self.restartGame();
         self.drawMap();
         self.changeStepColor();
-    })
-    
+    });
+
     // Withdraw click 
-    
-    this.getElement('withdraw-button').addEventListener('click',function () {
+
+    this.getElement('withdraw-button').addEventListener('click', function () {
         self.congrats();
         self.withdraw();
-    })
+    });
 
-    this.getElement('helpSurvey-button').addEventListener('click',function(){
+    this.getElement('helpSurvey-button').addEventListener('click', function () {
         self.helpSurvey();
         self.showSurvey();
-    })
-    this.getElement('help5050-button').addEventListener('click',function(){
+    });
+    this.getElement('help5050-button').addEventListener('click', function () {
         self.help5050();
 
         //self.showSurvey();
+    });
+
+    this.getElement('submit-answer').addEventListener('click',function () {
+        if (self.checkAnswer() == true) {
+            let correct = document.getElementById('true');
+            correct.play();
+        } else {
+            let correct = document.getElementById('false');
+            correct.play();
+        }
     })
 
-}
+};
 Game.prototype.hide = function (elementDom) {
     this._elementDom = elementDom;
     this._elementDom.css('display', 'none');
@@ -308,7 +191,7 @@ Game.prototype.show = function (elementDom) {
 
 
 Game.prototype.show5050 = function () {
-    if (!this._use5050  && this.level >=5) {
+    if (!this._use5050 && this.level >= 5) {
         this.show($("#help5050-button"))
     } else {
         this.hide($("#help5050-button"))
@@ -316,7 +199,7 @@ Game.prototype.show5050 = function () {
 };
 
 Game.prototype.showSurvey = function () {
-    if (!this._useSurvey && this.level >=5) {
+    if (!this._useSurvey && this.level >= 5) {
         this.show($("#helpSurvey-button"))
     } else {
         this.hide($("#helpSurvey-button"))
@@ -327,68 +210,68 @@ Game.prototype.drawMap = function () {
     //console.log(countQuestion);
     for (var i = 1; i <= countQuestion; i++) {
         if (i % 5 !== 0) {
-            $("#reward").append("<div class='rewardStep' id='step" + i + "'><p class='number'>" + i + "</p><span class='step'>"+QUESTION[i-1].point+" $</span></div>")
+            $("#reward").append("<div class='rewardStep' id='step" + i + "'><p class='number'>" + i + "</p><span class='step'>" + QUESTION[i - 1].point + " VNĐ</span></div>")
         } else {
-            $("#reward").append("<div class='specialRewardStep' id='step" + i + "'><p class='specialNumber'>" + i + "</p><span class='step'>"+QUESTION[i-1].point+" $</span></div>")
+            $("#reward").append("<div class='specialRewardStep' id='step" + i + "'><p class='specialNumber'>" + i + "</p><span class='step'>" + QUESTION[i - 1].point + " VNĐ</span></div>")
         }
     }
 
 };
 
 Game.prototype.drawChart = function (valueA, valueB, valueC, valueD) {
-            this.hide($("#reward"));
-            this.show($("#survey-region"));
-            var i = 0;
-            $("#chartA").append("<span class='ABCD'>A</span><span class='startPercent'></span>");
-            $("#chartB").append("<span class='ABCD'>B</span><span class='startPercent'></span>");
-            $("#chartC").append("<span class='ABCD'>C</span><span class='startPercent'></span>");
-            $("#chartD").append("<span class='ABCD'>D</span><span class='startPercent'></span>");
+    this.hide($("#reward"));
+    this.show($("#survey-region"));
+    var i = 0;
+    $("#chartA").append("<span class='ABCD'>A</span><span class='startPercent'></span>");
+    $("#chartB").append("<span class='ABCD'>B</span><span class='startPercent'></span>");
+    $("#chartC").append("<span class='ABCD'>C</span><span class='startPercent'></span>");
+    $("#chartD").append("<span class='ABCD'>D</span><span class='startPercent'></span>");
 
-            for (i = 1; i <= valueA; i++) {
-                setTimeout(function () {
-                    $("#chartA").append("<span class='percent'></span>")
-                }, 100)
-            }
-            for (i = 1; i <= valueB; i++) {
-                setTimeout(function () {
-                    $("#chartB").append("<span class='percent'></span>")
+    for (i = 1; i <= valueA; i++) {
+        setTimeout(function () {
+            $("#chartA").append("<span class='percent'></span>")
+        }, 100)
+    }
+    for (i = 1; i <= valueB; i++) {
+        setTimeout(function () {
+            $("#chartB").append("<span class='percent'></span>")
 
-                }, 100)
-            }
-            for (i = 1; i <= valueC; i++) {
-                setTimeout(function () {
-                    $("#chartC").append("<span class='percent'></span>")
+        }, 100)
+    }
+    for (i = 1; i <= valueC; i++) {
+        setTimeout(function () {
+            $("#chartC").append("<span class='percent'></span>")
 
-                }, 100)
-            }
-            for (i = 1; i <= valueD; i++) {
-                setTimeout(function () {
-                    $("#chartD").append("<span class='percent'></span>")
+        }, 100)
+    }
+    for (i = 1; i <= valueD; i++) {
+        setTimeout(function () {
+            $("#chartD").append("<span class='percent'></span>")
 
-                }, 100)
-            }
+        }, 100)
+    }
 
-            setTimeout(function () {
-                $("#chartA").append("<span class='percentNumber'> " + valueA + "%</span>")
+    setTimeout(function () {
+        $("#chartA").append("<span class='percentNumber'> " + valueA + "%</span>")
 
-            }, 900);
+    }, 900);
 
-            setTimeout(function () {
-                $("#chartB").append("<span class='percentNumber'> " + valueB + "%</span>")
+    setTimeout(function () {
+        $("#chartB").append("<span class='percentNumber'> " + valueB + "%</span>")
 
-            }, 900);
+    }, 900);
 
-            setTimeout(function () {
-                $("#chartC").append("<span class='percentNumber'> " + valueC + "%</span>")
+    setTimeout(function () {
+        $("#chartC").append("<span class='percentNumber'> " + valueC + "%</span>")
 
-            }, 900);
+    }, 900);
 
-            setTimeout(function () {
-                $("#chartD").append("<span class='percentNumber'> " + valueD + "%</span>")
+    setTimeout(function () {
+        $("#chartD").append("<span class='percentNumber'> " + valueD + "%</span>")
 
-            }, 900)
+    }, 900)
 
-        };
+};
 Game.prototype.changeStepColor = function () {
     this.point += QUESTION[this.level].point;
     var currentStep = this.level + 1;
@@ -489,175 +372,175 @@ Game.prototype.resetBoardStatus = function () {
 
 };
 Game.prototype.help5050 = function () {
-            var answerBox = this.getCorrect();
-            var random1 = this.random(1, 3);
-            var random2 = this.random(1, 3);
-            this.boxWrong(answerBox, random1, random2);
-            this._use5050 = true;
-            this._number5050 = this.level + 1;
-            //console.log(self._keep);
-            //console.log(answerBox);
+    var answerBox = this.getCorrect();
+    var random1 = this.random(1, 3);
+    var random2 = this.random(1, 3);
+    this.boxWrong(answerBox, random1, random2);
+    this._use5050 = true;
+    this._number5050 = this.level + 1;
+    //console.log(self._keep);
+    //console.log(answerBox);
 };
 Game.prototype.NumberBoxNameChanger = function (value) {
-            //console.log(value);
-            if (value == "A") {
-                return 1;
-            } else if (value == "B") {
-                return 2;
-            } else if (value == "C") {
-                return 3;
-            } else if (value == "D") {
-                return 4;
-            } else if (value == 1) {
-                return "boxA"
-            } else if (value == 2) {
-                return "boxB"
-            } else if (value == 3) {
-                return "boxC"
-            } else {
-                return "boxD"
-            }
+    //console.log(value);
+    if (value == "A") {
+        return 1;
+    } else if (value == "B") {
+        return 2;
+    } else if (value == "C") {
+        return 3;
+    } else if (value == "D") {
+        return 4;
+    } else if (value == 1) {
+        return "boxA"
+    } else if (value == 2) {
+        return "boxB"
+    } else if (value == 3) {
+        return "boxC"
+    } else {
+        return "boxD"
+    }
 
 };
 Game.prototype.boxWrong = function (boxName, random1, random2) {
-            var boxID = this.NumberBoxNameChanger(boxName);
-            console.log(boxID);
-            if (random1 == random2) {
-                if (random1 !== 1) {
-                    random1--
-                } else {
-                    random1++
-                }
-            }
+    var boxID = this.NumberBoxNameChanger(boxName);
+    console.log(boxID);
+    if (random1 == random2) {
+        if (random1 !== 1) {
+            random1--
+        } else {
+            random1++
+        }
+    }
 
-            var number1 = (boxID + random1) % 4;
-            if (number1 == 0)(number1 = 4);
-            var number2 = (boxID + random2) % 4;
-            if (number2 == 0)(number2 = 4);
-            var boxWrong1 = this.NumberBoxNameChanger(number1);
-            var boxWrong2 = this.NumberBoxNameChanger(number2);
-            //console.log(boxWrong1,boxWrong2);
-            for (var i = 1; i <= 4; i++) {
-                if (i !== number1 && i !== number2 && i !== boxID) self._keep = i;
-            }
+    var number1 = (boxID + random1) % 4;
+    if (number1 == 0) (number1 = 4);
+    var number2 = (boxID + random2) % 4;
+    if (number2 == 0) (number2 = 4);
+    var boxWrong1 = this.NumberBoxNameChanger(number1);
+    var boxWrong2 = this.NumberBoxNameChanger(number2);
+    //console.log(boxWrong1,boxWrong2);
+    for (var i = 1; i <= 4; i++) {
+        if (i !== number1 && i !== number2 && i !== boxID) self._keep = i;
+    }
 
 
-            this.clearWrong(boxWrong1, boxWrong2);
+    this.clearWrong(boxWrong1, boxWrong2);
 
-        };
+};
 
 Game.prototype.clearWrong = function (boxName1, boxName2) {
 
-            boxName1 = "#" + boxName1;
-            boxName2 = "#" + boxName2;
-            $(boxName1).attr('class', 'boxWrong');
-            $(boxName2).attr('class', 'boxWrong');
-            $(boxName1).css('pointer-events', 'none');
-            $(boxName2).css('pointer-events', 'none');
-            $(boxName1).css('background-color', '#3498db');
-            $(boxName2).css('background-color', '#3498db');
+    boxName1 = "#" + boxName1;
+    boxName2 = "#" + boxName2;
+    $(boxName1).attr('class', 'boxWrong');
+    $(boxName2).attr('class', 'boxWrong');
+    $(boxName1).css('pointer-events', 'none');
+    $(boxName2).css('pointer-events', 'none');
+    $(boxName1).css('background-color', '#3498db');
+    $(boxName2).css('background-color', '#3498db');
 
 };
 Game.prototype.helpSurvey = function () {
-            var answerBox = this.getCorrect();
-            //console.log(answerBox);
-            var sum = 76;
-            var value1 = this.random(0, sum);
-            var value2 = this.random(0, sum - value1);
-            var value3 = this.random(0, sum - value1 - value2);
-            var value4 = sum - value1 - value2 - value3;
-            var valueA = this.random(1, 4);
-            var valueB = 0;
-            var valueC = 0;
-            var valueD = 0;
+    var answerBox = this.getCorrect();
+    //console.log(answerBox);
+    var sum = 76;
+    var value1 = this.random(0, sum);
+    var value2 = this.random(0, sum - value1);
+    var value3 = this.random(0, sum - value1 - value2);
+    var value4 = sum - value1 - value2 - value3;
+    var valueA = this.random(1, 4);
+    var valueB = 0;
+    var valueC = 0;
+    var valueD = 0;
 
 
-            if (valueA === 1) {
-                valueA = value1;
-                valueB = value2;
-                valueC = value3;
-                valueD = value4;
-            } else if (valueA === 2) {
-                valueA = value2;
-                valueB = value3;
-                valueC = value4;
-                valueD = value1;
-            } else if (valueA === 3) {
-                valueA = value3;
-                valueB = value4;
-                valueC = value1;
-                valueD = value2;
-            } else {
-                valueA = value4;
-                valueB = value1;
-                valueC = value2;
-                valueD = value3;
-            }
+    if (valueA === 1) {
+        valueA = value1;
+        valueB = value2;
+        valueC = value3;
+        valueD = value4;
+    } else if (valueA === 2) {
+        valueA = value2;
+        valueB = value3;
+        valueC = value4;
+        valueD = value1;
+    } else if (valueA === 3) {
+        valueA = value3;
+        valueB = value4;
+        valueC = value1;
+        valueD = value2;
+    } else {
+        valueA = value4;
+        valueB = value1;
+        valueC = value2;
+        valueD = value3;
+    }
 
 
-            if (answerBox === "boxA") {
-                valueA = valueA + 24;
+    if (answerBox === "boxA") {
+        valueA = valueA + 24;
 
-            } else if (answerBox === "boxB") {
-                valueB = valueB + 24;
+    } else if (answerBox === "boxB") {
+        valueB = valueB + 24;
 
-            } else if (answerBox === "boxC") {
-                valueC = valueC + 24;
-            } else {
-                valueD = valueD + 24;
-            }
-
-
-            if (this._number5050 == this.level + 1) {
-
-                var sumRemove = 0;
+    } else if (answerBox === "boxC") {
+        valueC = valueC + 24;
+    } else {
+        valueD = valueD + 24;
+    }
 
 
-                if (self._keep !== 1 || answerBox !== "boxA") {
+    if (this._number5050 == this.level + 1) {
 
-                    sumRemove += valueA;
-                    valueA = 0;
-                }
-                if (self._keep !== 2 && answerBox !== "boxB") {
-                    sumRemove += valueB;
-                    valueB = 0;
-
-                }
-                if (self._keep !== 3 && answerBox !== "boxC") {
-                    sumRemove += valueC;
-                    valueC = 0;
-
-                }
-                if (self._keep !== 4 && answerBox !== "boxD") {
-                    sumRemove += valueD;
-                    valueD = 0;
-
-                }
+        var sumRemove = 0;
 
 
-                if (answerBox === "boxA") {
-                    valueA = valueA + sumRemove;
+        if (self._keep !== 1 || answerBox !== "boxA") {
 
-                } else if (answerBox === "boxB") {
-                    valueB = valueB + sumRemove;
+            sumRemove += valueA;
+            valueA = 0;
+        }
+        if (self._keep !== 2 && answerBox !== "boxB") {
+            sumRemove += valueB;
+            valueB = 0;
 
-                } else if (answerBox === "boxC") {
-                    valueC = valueC + sumRemove;
-                } else {
-                    valueD = valueD + sumRemove;
-                }
+        }
+        if (self._keep !== 3 && answerBox !== "boxC") {
+            sumRemove += valueC;
+            valueC = 0;
+
+        }
+        if (self._keep !== 4 && answerBox !== "boxD") {
+            sumRemove += valueD;
+            valueD = 0;
+
+        }
 
 
-            }
+        if (answerBox === "boxA") {
+            valueA = valueA + sumRemove;
 
-            this.drawChart(valueA, valueB, valueC, valueD);
-            this._useSurvey = true;
+        } else if (answerBox === "boxB") {
+            valueB = valueB + sumRemove;
+
+        } else if (answerBox === "boxC") {
+            valueC = valueC + sumRemove;
+        } else {
+            valueD = valueD + sumRemove;
+        }
 
 
-};       
+    }
+
+    this.drawChart(valueA, valueB, valueC, valueD);
+    this._useSurvey = true;
+
+
+};
 
 Game.prototype.changeSubmitAnswerButton = function () {
-    this.checkAnswer() ?  this.show($("#next-question")): this.show($("#restart-game"));
+    this.checkAnswer() ? this.show($("#next-question")) : this.show($("#restart-game"));
 
 };
 Game.prototype.withdraw = function () {
@@ -687,9 +570,9 @@ Game.prototype.nextOrStop = function () {
         var message = "";
         $("#alert").attr("class", "alert alert-danger");
         if (this.level >= 10) {
-            message = "Bạn ra về với "+QUESTION[9].point +" $";
+            message = "Bạn ra về với " + QUESTION[9].point + " $";
         } else if (this.level >= 5) {
-            message = "Bạn ra về với "+QUESTION[4].point +" $";
+            message = "Bạn ra về với " + QUESTION[4].point + " $";
         } else {
             message = "Tiếc quá ! Bạn đã trả lời sai rồi."
         }
@@ -698,7 +581,8 @@ Game.prototype.nextOrStop = function () {
 
     }
 
-    this.hide($("#submit-answer"))
+    this.hide($("#submit-answer"));
+
 
 };
 Game.prototype.random = function (min, max) {
@@ -708,12 +592,50 @@ Game.prototype.random = function (min, max) {
 };
 
 
-
-
-function init(){
-    var g = new Game();
+function init() {
+    var game = new Game();
     //g.level  = 5;
-    g.startGame();
+    game.startGame();
+    // if (game.checkAnswer == true) {
+    //     $('#submit-answer').click(function () {
+    //         let Answer = document.getElementById("true");
+    //         Answer.play();
+    //         console.log("ĐÂY LÀ TRUE")
+    //     });
+    // } else {
+    //     $('#submit-answer').click(function () {
+    //         let Answer = document.getElementById("false");
+    //         Answer.play();
+    //         console.log("ĐÂY LÀ FALSE")
+    //     });
+    // }
+
 }
 
+
+// $('#submit-answer').click(function () {
+//     let trueAnswer = document.getElementById("true");
+//     trueAnswer.play();
+// });
+//
+// $('#submit-answer').click(function () {
+//     let falseAnswer = document.getElementById("false");
+//     falseAnswer.play();
+// });
+
+$('#withdraw-button').click(function () {
+    let finishGame = document.getElementById("finish");
+    finishGame.play();
+});
+
+$('#help5050-button').click(function () {
+    let doubleFifty = document.getElementById("fifty-fifty");
+    doubleFifty.play();
+});
+
+
+$('#helpSurvey-button').click(function () {
+    let helpSurvey = document.getElementById("help");
+    helpSurvey.play();
+});
 

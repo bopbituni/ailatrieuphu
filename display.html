@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game Show Ai La Trieu Phu</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<h1><img src="image.png" alt="Logo" width="200" height="200"></h1>
+
+
+
+<h1>Ai Là Triệu Phú ?</h1>
+
+
+
+<audio id="finish"> <!--Source the audio file. -->
+    <source src="sound/finish.ogg" type="audio/ogg">
+</audio>
+<audio id="fifty-fifty"> <!--Source the audio file. -->
+    <source src="sound/5050.ogg" type="audio/ogg">
+</audio>
+<audio id="true"> <!--Source the audio file. -->
+    <source src="sound/result.ogg" type="audio/ogg">
+</audio>
+<audio id="help"> <!--Source the audio file. -->
+    <source src="sound/Tuvantaicho.ogg" type="audio/ogg">
+</audio>
+<audio id="false">
+    <source src="sound/sai.ogg" type="audio/ogg">
+</audio>
+
+
+
+<body onload="init()">
+
+
+
+<iframe src="sound/silence.mp3" allow="autoplay" id="audioPlay" style="display:none"></iframe>
+<audio autoplay loop> <!--Source the audio file. -->
+    <source src="sound/1-5.ogg" type="audio/ogg">
+</audio>
+
+
+<div id="each-question" class="row">
+    <table>
+        <thead>
+        <tr>
+            <div id="question"><span id="question-number"></span>
+                <span id="display-question"></span>
+
+            </div>
+        <tr>
+        </thead>
+        <tbody id="sellector">
+        <tr>
+            <td>
+                <div id="boxA" class="box"></div>
+            </td>
+            <td>
+                <div id="boxB" class="box"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="boxC" class="box"></div>
+            </td>
+            <td>
+                <div id="boxD" class="box"></div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="form-group" id="board-button">
+        <button class="btn btn-info" id="submit-answer">Tôi chắc chắn</button>
+        <button class="btn btn-warning" id="withdraw-button">Dừng cuộc chơi</button>
+        <button class="btn btn-warning" id="time"></button>
+
+        <button class="btn btn-info" id="help5050-button">50 : 50</button>
+        <button class="btn btn-primary" id="helpSurvey-button">Hỏi khán giả</button>
+    </div>
+    <div class="clearfix">
+    </div>
+    <div class="form-group" id="result-button">
+        <button class="btn btn-success" id="next-question">Câu tiếp theo</button>
+        <button class="btn btn-danger" id="restart-game">Chơi lại</button>
+    </div>
+    <div class="notice">
+        <div class="alert" id="alert"></div>
+    </div>
+    <div class="raw" id="reward"></div>
+    <div class="raw" id="point"></div>
+    <div class="raw" id="survey-region">
+        <div class="surveyBoard">
+            <div class="raw" id="chartA"></div>
+            <div class="raw" id="chartB"></div>
+            <div class="raw" id="chartC"></div>
+            <div class="raw" id="chartD"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- jQuery -->
+<script src="data.question.js"></script>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<!-- Bootstrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+        integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+        crossorigin="anonymous"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+</body>
+</html>
