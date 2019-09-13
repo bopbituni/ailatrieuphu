@@ -577,6 +577,8 @@ Game.prototype.nextOrStop = function () {
             $("#alert").html("Chúc mừng bạn đã trở thành TRIỆU PHÚ");
             this.show($('#restart-game'));
             this.hide($('#next-question'));
+            let winner = document.getElementById("winner");
+            winner.play();
 
         }
     } else {

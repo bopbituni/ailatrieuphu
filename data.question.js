@@ -84,7 +84,7 @@ const QUESTION = [ // Database Question
             C: "Một đối tượng cụ thể",
             D: "Cả 3 phương án trên"
         },
-        correct: "D"
+        correct: "A"
     }, {
         question: "Trong Javascript, phương thức nào dưới đây dùng để lấy một ký tự tại một vị trí xác định trong chuỗi?",
         point: 12000,
@@ -115,7 +115,7 @@ const QUESTION = [ // Database Question
             C: "2017",
             D: "2018"
         },
-        correct: "A"
+        correct: "C"
     }, {
         question: "<script>\n" +
             "\n" +
