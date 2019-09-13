@@ -596,32 +596,11 @@ function init() {
     var game = new Game();
     //g.level  = 5;
     game.startGame();
-    // if (game.checkAnswer == true) {
-    //     $('#submit-answer').click(function () {
-    //         let Answer = document.getElementById("true");
-    //         Answer.play();
-    //         console.log("ĐÂY LÀ TRUE")
-    //     });
-    // } else {
-    //     $('#submit-answer').click(function () {
-    //         let Answer = document.getElementById("false");
-    //         Answer.play();
-    //         console.log("ĐÂY LÀ FALSE")
-    //     });
-    // }
+
 
 }
 
 
-// $('#submit-answer').click(function () {
-//     let trueAnswer = document.getElementById("true");
-//     trueAnswer.play();
-// });
-//
-// $('#submit-answer').click(function () {
-//     let falseAnswer = document.getElementById("false");
-//     falseAnswer.play();
-// });
 
 $('#withdraw-button').click(function () {
     let finishGame = document.getElementById("finish");
