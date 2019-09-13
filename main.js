@@ -162,13 +162,26 @@ let Game = function () {
         self.helpSurvey();
         self.showSurvey();
     });
-    this.getElement('help5050-button').addEventListener('click', function () {
-        self.help5050();
+    this.getElement('withdraw-button').addEventListener('click', function () {
+        self.withdraw();
+        let finishGame = document.getElementById("finish");
+        finishGame.play();
 
-        //self.showSurvey();
     });
 
-    this.getElement('submit-answer').addEventListener('click',function () {
+    this.getElement('help5050-button').addEventListener('click', function () {
+        self.help5050();
+        let doubleFifty = document.getElementById("fifty-fifty");
+        doubleFifty.play();
+    });
+
+    this.getElement('helpSurvey-button').addEventListener('click', function () {
+        self.helpSurvey();
+        let helpSurvey = document.getElementById("help");
+        helpSurvey.play();
+    });
+
+    this.getElement('submit-answer').addEventListener('click', function () {
         if (self.checkAnswer() == true) {
             let correct = document.getElementById('true');
             correct.play();
@@ -373,8 +386,8 @@ Game.prototype.resetBoardStatus = function () {
 };
 Game.prototype.help5050 = function () {
     var answerBox = this.getCorrect();
-    var random1 = this.random(1, 3);
-    var random2 = this.random(1, 3);
+    var random1 = this.random(1, 2);
+    var random2 = this.random(1, 2);
     this.boxWrong(answerBox, random1, random2);
     this._use5050 = true;
     this._number5050 = this.level + 1;
@@ -599,22 +612,4 @@ function init() {
 
 
 }
-
-
-
-$('#withdraw-button').click(function () {
-    let finishGame = document.getElementById("finish");
-    finishGame.play();
-});
-
-$('#help5050-button').click(function () {
-    let doubleFifty = document.getElementById("fifty-fifty");
-    doubleFifty.play();
-});
-
-
-$('#helpSurvey-button').click(function () {
-    let helpSurvey = document.getElementById("help");
-    helpSurvey.play();
-});
 
