@@ -12,12 +12,44 @@
         margin: auto;
         background: red;
     }
+
+    form {
+        background: #27ae60;
+        height: 640px;
+    }
+
+    p hr {
+        font-size: 20px;
+        margin: auto;
+    }
 </style>
 <body>
 
 <form align="center" action="display.html">
     <h1>Kiểm tra lý thuyết</h1>
     <button onclick="startGame()">StartGame</button>
+    <p>
+    <h3>1. Người chơi phải trả lời 12 câu hỏi với cấp độ từ dễ đến khó, thời gian suy nghĩ không hạn chế.
+        <br>Mỗi câu hỏi có một
+        mức tiền thưởng, tăng dần theo thứ tự. Có ba mốc quan trọng là câu số 5, câu số 10 và câu số
+        12 (mốc "TRIỆU
+        PHÚ"). <br>Khi vượt qua các mốc này, họ chắc chắn có được số tiền thưởng tương ứng của các câu
+        hỏi đó.</h3>
+    <hr>
+    <h3>2. Kể từ câu số 10 trở đi, mỗi khi người chơi trả lời đúng một câu hỏi, người dẫn chương trình
+        sẽ ký một tấm séc
+        cho người chơi có trị giá giải thưởng tương đương với câu hỏi mà người chơi trả lời đúng.</h3>
+    <hr>
+    <h3>3. Người chơi có quyền chơi tiếp hoặc dừng cuộc chơi. <br>Nếu dừng cuộc chơi, họ sẽ ra về với số
+        tiền tương ứng với câu
+        hỏi đã trả lời đúng gần nhất. <br>Nếu chơi tiếp mà trả lời sai, cuộc chơi khép lại và người chơi
+        nhận số tiền thưởng
+        tương ứng với mốc quan trọng gần nhất.<br> Nếu trả lời sai khi chưa qua câu số 5, người chơi sẽ
+        không nhận được tiền
+        thưởng.<br> Nếu trả lời đúng tất cả các câu hỏi, người chơi sẽ trở thành "TRIỆU PHÚ", nhận được
+        giải thưởng tương
+        ứng với câu cuối cùng.</h3>
+    </p>
 </form>
 </body>
 <script src="main.js"></script>
