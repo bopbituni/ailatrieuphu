@@ -57,7 +57,7 @@ const QUESTION = [ // Database Question
         correct: "D"
     }, {
         question: "Trong Javascript, phương thức nào dưới đây dùng để lấy một ký tự tại một vị trí xác định trong chuỗi?",
-        point: 5000,
+        point: 3000,
         answer: {
             A: "characterAt()",
             B: "indexOf()",
@@ -67,7 +67,7 @@ const QUESTION = [ // Database Question
         correct: "D"
     }, {
         question: "Mã lệnh nào cho phép sắp xếp một mảng tên là names trong JavaScript? ",
-        point: 10000,
+        point: 5000,
         answer: {
             A: "Array.sort(names)",
             B: "names.bubbleSort()",
@@ -77,7 +77,7 @@ const QUESTION = [ // Database Question
         correct: "D"
     }, {
         question: "Thuật toán tìm kiếm và sắp xếp được thực hiện tốt nhất với cấu trúc dữ liệu nào?",
-        point: 15000,
+        point: 10000,
         answer: {
             A: "Một danh sách liên kết",
             B: "Một mảng dựa trên danh sách",
@@ -87,7 +87,7 @@ const QUESTION = [ // Database Question
         correct: "D"
     }, {
         question: "Trong Javascript, phương thức nào dưới đây dùng để lấy một ký tự tại một vị trí xác định trong chuỗi?",
-        point: 20000,
+        point: 12000,
         answer: {
             A: "substr()",
             B: "charAt()",
@@ -98,7 +98,7 @@ const QUESTION = [ // Database Question
     }, {
         question: "Độ phức tạp tệ nhất của thuật toán tìm kiếm tuyến tính là gì?\n" +
             "\n",
-        point: 25000,
+        point: 15000,
         answer: {
             A: "O(1)",
             B: "O(logn)",
@@ -108,7 +108,7 @@ const QUESTION = [ // Database Question
         correct: "C"
     }, {
         question: "Codegym việt nam được thành lập vào năm bao nhiêu",
-        point: 30000,
+        point: 20000,
         answer: {
             A: "2015",
             B: "2016",
@@ -130,7 +130,7 @@ const QUESTION = [ // Database Question
             "</head>\n" +
             "\n" +
             "<body onload =\"kiemtra()\"></body>",
-        point: 40000,
+        point: 30000,
         answer: {
             A: "Khi chạy thì một trang khác (VNN) được hiện ra",
             B: "Không chạy được vì sai",
