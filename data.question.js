@@ -2,7 +2,7 @@ const TIME = 60;
 const QUESTION = [ // Database Question
     {
         question: "Trong JavaScript sự kiện Onchange xảy ra khi nào?",
-        point: 100,
+        point: -10000,
         answer: {
             A: " Khi một đối tượng trong form nhận focus ",
             B: " Xảy ra khi form được người dùng thay đổi dữ liệu ",
@@ -12,7 +12,7 @@ const QUESTION = [ // Database Question
         correct: "B"
     }, {
         question: "Lệnh 'for' nào thực hiện lặp 5 lần?",
-        point: 300,
+        point: -5000,
         answer: {
             A: "for( i=0; i<6; i++ )",
             B: "for( i=0; i<5; i++ )",
@@ -26,7 +26,7 @@ const QUESTION = [ // Database Question
             "    x = x + 1;\n" +
             "}\n" +
             "console.log(x);",
-        point: 500,
+        point: -3000,
         answer: {
             A: "4",
             B: "3",
@@ -36,7 +36,7 @@ const QUESTION = [ // Database Question
         correct: "D"
     }, {
         question: "Đâu là khởi tạo mảng đúng?",
-        point: 1000,
+        point: -1000,
         answer: {
             A: "let a = [12,false,\"Luân\"];\n",
             B: "let a = array(12,false,\"Hòa\");",
@@ -47,7 +47,7 @@ const QUESTION = [ // Database Question
     }, {
         question: "Đâu là định nghĩa đúng về một hàm trong JavaScript?\n" +
             "\n",
-        point: 2000,
+        point: 1000,
         answer: {
             A: "function.FunctionName()",
             B: "new FunctionName()",
